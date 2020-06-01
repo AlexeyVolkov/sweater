@@ -44,6 +44,16 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return "https://avatars.dicebear.com/api/avataaars//" . $this->email . ".svg";
+        return "https://avatars.dicebear.com/api/avataaars/" . $this->email . ".svg";
+    }
+
+    public function follow(User $user)
+    {
+        return $this->follows()->save($user);
+    }
+
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
     }
 }

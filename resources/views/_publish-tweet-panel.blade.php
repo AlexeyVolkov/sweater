@@ -2,7 +2,11 @@
     <form action="/tweets" method="post">
         @csrf
 
-        <textarea name="body" id="" class="w-full" placeholder="What's up doc? Talk" required></textarea>
+        <textarea name="body" id="" class="w-full" placeholder="What's up doc? Talk" required
+            maxlength="255"></textarea>
+        @error('body')
+        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+        @enderror
 
         <hr class="my-4">
 

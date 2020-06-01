@@ -1,12 +1,11 @@
-<h3 class="font-bold text-lg mb-4">Friends</h3>
+<h3 class="font-bold text-lg mb-4">Following</h3>
 
 <ul>
-    @foreach (range(1,8) as $item)
+    @foreach (auth()->user()->follows as $friend)
     <li class="mb-4">
         <div class="flex items-center text-sm">
-            <img src="https://avatars.dicebear.com/api/avataaars/JohnDoe{{$item}}.svg" alt="John {{$item}} Doe"
-                class="rounded-full h-12 mr-2">
-            John {{$item}} Doe
+            <img src="{{ $friend->avatar }}" alt="{{ $friend->name }}" class="rounded-full h-12 mr-2">
+            {{ $friend->name }}
         </div>
     </li>
     @endforeach
