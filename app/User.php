@@ -55,4 +55,11 @@ class User extends Authenticatable
     {
         return "https://avatars.dicebear.com/api/avataaars/" . $this->email . ".svg";
     }
+
+    public function path($append = '')
+    {
+        $path = route('profile', $this->name);
+
+        return $append ? "{$path}/{$append}" : $path;
+    }
 }
