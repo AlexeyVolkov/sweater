@@ -8,7 +8,7 @@ use App\Tweet;
 
 class ExploreController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         return view('explore.index', [
             'tweets' => Tweet::paginate(50),

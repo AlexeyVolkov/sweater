@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Sweater') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,9 +25,11 @@
     <div id="app" class="antialiased">
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto">
-                <h1 class="font-bold text-5xl">
-                    Sweater
-                </h1>
+                <a href="{{ route('home') }}" title="Home page">
+                    <h1 class="font-bold text-5xl">
+                        Sweater
+                    </h1>
+                </a>
             </header>
         </section>
 
