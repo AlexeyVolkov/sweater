@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'background', 'password',
     ];
 
     /**
@@ -51,15 +51,25 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
-    public function getAvatarAttribute()
+    public function getAvatarAttribute($value)
     {
-        return "https://avatars.dicebear.com/api/avataaars/" . $this->email . ".svg";
+        return "https://avatars.dicebear.com/api/avataaars/" . $this->username . ".svg";
+    }
+
+    public function getBackgroundAttribute($value)
+    {
+        return asset('storage/' . $value);
     }
 
     public function path($append = '')
     {
-        $path = route('profile', $this->name);
+        $path = route('profile', $this->username);
 
         return $append ? "{$path}/{$append}" : $path;
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }
