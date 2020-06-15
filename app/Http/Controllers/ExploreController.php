@@ -11,7 +11,7 @@ class ExploreController extends Controller
     public function __invoke()
     {
         return view('explore.index', [
-            'tweets' => Tweet::paginate(50),
+            'tweets' => Tweet::latest()->paginate(50),
         ]);
     }
 }
